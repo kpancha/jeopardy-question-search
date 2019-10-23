@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %>! Search for any question below</p>
+      <form action="/results" method="get">
+       <label for="team_name">Enter a question: </label>
+       <input id="team_name" type="text" name="name_field" value="">
+       <input type="submit" value="Search">
+   </form>
+   <form id="tableForm" action="/results" method="get">
+     <label for="start_date">Choose a start date (optional): </label>
+    <select class="selectpicker" data-style="btn-info" name="selectpicker">
+        <optgroup label="Select a Month">
+            <option name="" value="0">Select a Month</option>
+            <option name="jan" value="1">January</option>
+            <option name="feb" value="2">February</option>
+            <option name="mar" value="3">March</option>
+            <option name="apr" value="4">April</option>
+            <option name="may" value="5">May</option>
+            <option name="jun" value="6">June</option>
+            <option name="jul" value="7">July</option>
+            <option name="aug" value="8">August</option>
+            <option name="sep" value="9">September</option>
+            <option name="oct" value="10">October</option>
+            <option name="nov" value="11">November</option>
+            <option name="dec" value="12">December</option>
+        </optgroup>
+    </select>
+    <select class="selectpicker" data-style="btn-info" name="selectpicker">
+        <optgroup label="Select a Day">
+            <option name="" value="0">Select a Day</option>
+            <script>
+            var i;
+            for(i=1; i<31; i++) {
+              console.log(i);
+              <option name=toString(i) value=toString(i)>i</option>
+            }
+            </script>
+        </optgroup>
+    <input type="submit" />
+</form>
+  </body>
+</html>
