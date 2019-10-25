@@ -15,10 +15,10 @@
       </tr>
       <% for(var i=0; i<results.length; i++) {%>
         <tr>
-          <td><%= results[i].answer %></td>
-          <td><%= results[i].question %></td>
+          <td><%- results[i].answer %></td>
+          <td><%- results[i].question %></td>
           <td><%= results[i].value %></td>
-          <td><%= results[i].category.title %></td>
+          <td><a href="/results?category=<%= results[i].category_id%>"><%- results[i].category.title %></td>
         </tr>
       <% } %>
     </table>

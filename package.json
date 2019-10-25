@@ -13,6 +13,7 @@
     "http-errors": "~1.6.3",
     "jservice-node": "^0.2.3",
     "morgan": "~1.9.1",
-    "node-sass-middleware": "0.11.0"
+    "node-sass-middleware": "0.11.0",
+    "popups": "^1.1.3"
   }
 }
