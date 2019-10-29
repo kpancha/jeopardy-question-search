@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Datepicker - Restrict date range</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $( function() {
+        $( "#datepicker" ).datepicker({ minDate: new Date('March 30, 1964'), maxDate: 0 });
+      } );
+    </script>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
@@ -9,11 +23,26 @@
     <p>Welcome to <%= title %>! Search for any question below</p>
 
       <form action="/results" method="POST">
+
         <label for="team_name">Enter a question: </label>
         <input id="team_name" type="text" name="name_field" value="">
-        <!--<input type="submit" value="Search">-->
 
         <br>
+
+        <label for="category">Choose a category</label>
+        <select class="selectpicker" name="category" data-live-search="true" data-show-subtext="true">
+          <% for(var i=0; i<categories.length; i++) {%>
+
+              <option name="<%- categories[i].title %>" value="<%- categories[i].title %>"><%- categories[i].title %></option>
+          <% } %>
+        </select>
+
+        <br>
+
+        <p>Start Date: <input type="date" id="datepicker" name="start_date_field"></p>
+        <p>End Date: <input type="date" id="datepicker" name="end_date_field"></p>
+
+<!--
         <label for="start_date">Choose a start date (optional): </label>
         <select class="selectpicker" data-style="btn-info" name="min_month_field">
           <optgroup label="Select a Month">
@@ -48,8 +77,45 @@
               <% } %>
           </optgroup>
         </select>
-        <!--<input type="submit" />-->
+
         <br>
+
+        <label for="start_date">Choose an end date (optional): </label>
+        <select class="selectpicker" data-style="btn-info" name="max_month_field">
+          <optgroup label="Select a Month">
+              <option name="" value="0">Select a Month</option>
+              <option name="jan" value="01">January</option>
+              <option name="feb" value="02">February</option>
+              <option name="mar" value="03">March</option>
+              <option name="apr" value="04">April</option>
+              <option name="may" value="05">May</option>
+              <option name="jun" value="06">June</option>
+              <option name="jul" value="07">July</option>
+              <option name="aug" value="08">August</option>
+              <option name="sep" value="09">September</option>
+              <option name="oct" value="10">October</option>
+              <option name="nov" value="11">November</option>
+              <option name="dec" value="12">December</option>
+          </optgroup>
+        </select>
+        <select class="selectpicker" data-style="btn-info" name="max_day_field">
+          <optgroup label="Select a Day">
+              <option name="" value="0">Select a Day</option>
+              <% for(var i=1; i<=31; i++) {%>
+                <option name="<%= i %>" value="<%= i %>"><%= i %></option>
+              <% } %>
+          </optgroup>
+        </select>
+        <select class="selectpicker" data-style="btn-info" name="max_year_field">
+          <optgroup label="Select a Year">
+              <option name="" value="0">Select a Year</option>
+              <% for(var i=1964; i<=2019; i++) {%>
+                <option name="<%= i %>" value="<%= i %>"><%= i %></option>
+              <% } %>
+          </optgroup>
+        </select>
+-->
+
         <label for="question_value">Search by question value:</label>
         <select class="selectpicker" data-style="btn-info" name="question_value">
           <option name="" value="0">Select a Value</option>
@@ -57,7 +123,10 @@
               <option name="<%= i %>" value="<%= i %>"><%= i %></option>
             <% } %>
         </select>
-        <br><input type="submit" />
+        <br>
+
+        <input type="submit" />
+
       </form>
 
   </body>

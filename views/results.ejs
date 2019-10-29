@@ -8,10 +8,10 @@
     <h1><%= title %></h1>
     <table style="width:100%">
       <tr>
-	<td style="width:130px">Answer</td>
-	<td style="width:130px">Question</td>
-	<td style="width:130px">Value</td>
-	<td style="width:130px">Category</td>
+      	<td style="width:130px">Answer</td>
+      	<td style="width:130px">Question</td>
+      	<td style="width:130px">Value</td>
+      	<td style="width:130px">Category</td>
       </tr>
       <% for(var i=0; i<results.length; i++) {%>
         <tr>
@@ -22,5 +22,9 @@
         </tr>
       <% } %>
     </table>
-  </body>
+
+    <% if (results.length == 100) {%>
+      <a href="/results?offset=<%= (results.offset || 0) + i %>">More
+      <% } %>
+      </body>
 </html>
