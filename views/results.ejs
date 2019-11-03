@@ -8,6 +8,20 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <p><a href="/">Back to Search</a></p>
+    <p>Refine Search Results</p>
+    <form action='/results' method='POST'>
+      <p>Start Date: <input type="date" id="datepicker" name="start_date_field">
+        End Date: <input type="date" id="datepicker" name="end_date_field"></p>
+        <label for="question_value">Question Value:</label>
+        <select class="selectpicker" data-style="btn-info" name="question_value">
+          <option name="" value="0">Select a Value</option>
+            <% for(var i=200; i<=1000; i+=200) {%>
+              <option name="<%= i %>" value="<%= i %>"><%= i %></option>
+            <% } %>
+        </select>
+        <input type="submit" />
+    </form>
     <table style="width:100%">
       <tr>
       	<td style="font-weight:bold;width:130px">Answer</td>

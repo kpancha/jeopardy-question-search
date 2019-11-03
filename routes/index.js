@@ -36,6 +36,22 @@ router.post('/categories', function(req, res, next) {
   });
 });
 
+router.get('/categories', function(req, res, next){
+  var options = {};
+  options["offset"] = req.query.offset || 0;
+
+    js.categories(options, function(error, response, json){
+        if(!error && response.statusCode == 200){
+            //console.dir(json);
+            //console.log(response.id);
+            json["offset"] = parseInt(options["offset"]);
+            res.render('Categories', { title: 'Categories', categories : json })
+        } else {
+            console.log(`Error: ${response.statusCode}`);
+        }
+    });
+});
+
 router.post('/results', function(req, res, next) {
 
   const question_value = req.body.question_value;
@@ -56,8 +72,12 @@ router.post('/results', function(req, res, next) {
   if (min_date != undefined && max_date != undefined) {
     options["min_date"] = min_date;
     options["max_date"] = max_date;
-    //console.log(min_date);
-    //console.log(max_date);
+  } else if (min_date != undefined) {
+    options["min_date"] = min_date;
+    options["max_date"] = new Date();
+  } else if (max_date != undefined) {
+    options["min_date"] = new Date(1964, 3, 30);
+    options["max_date"] = max_date;
   }
 
   /*
