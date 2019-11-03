@@ -21,15 +21,33 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.post('/categories', function(req, res, next) {
+  var options = {
+    count: 100,
+    offset: 0
+  };
+  js.categories(options, function(error, response, json){
+      if(!error && response.statusCode == 200){
+          console.dir(json);
+          res.render('categories', { title: 'Jeopardy Question Search', categories : json  })
+      } else {
+          console.log(`Error: ${response.statusCode}`);
+      }
+  });
+});
+
 router.post('/results', function(req, res, next) {
 
   const question_value = req.body.question_value;
   var options = {};
-  options["category"] = req.query.category;
+  if (req.body.category != 0) {
+      options["category"] = req.body.category;
+  }
+  //console.log(req.query.category);
 
   if (question_value != 0) {
     options["value"] = parseInt(question_value);
-    console.log(question_value);
+    //console.log(question_value);
   }
 
   const min_date = req.body.start_date_field
@@ -38,8 +56,8 @@ router.post('/results', function(req, res, next) {
   if (min_date != undefined && max_date != undefined) {
     options["min_date"] = min_date;
     options["max_date"] = max_date;
-    console.log(min_date);
-    console.log(max_date);
+    //console.log(min_date);
+    //console.log(max_date);
   }
 
   /*

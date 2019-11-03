@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
     <h1><%= title %></h1>
     <table style="width:100%">
       <tr>
-      	<td style="width:130px">Answer</td>
-      	<td style="width:130px">Question</td>
-      	<td style="width:130px">Value</td>
-      	<td style="width:130px">Category</td>
+      	<td style="font-weight:bold;width:130px">Answer</td>
+      	<td style="font-weight:bold;width:130px">Question</td>
+      	<td style="font-weight:bold;width:130px">Value</td>
+      	<td style="font-weight:bold;width:130px">Category</td>
+        <td style="font-weight:bold;width:130px">Air Date</td>
       </tr>
       <% for(var i=0; i<results.length; i++) {%>
         <tr>
@@ -19,6 +22,7 @@
           <td><%- results[i].question %></td>
           <td><%= results[i].value %></td>
           <td><a href="/results?category=<%= results[i].category_id%>"><%- results[i].category.title %></td>
+          <td><%- results[i].airdate.substring(0,10) %></td>
         </tr>
       <% } %>
     </table>
