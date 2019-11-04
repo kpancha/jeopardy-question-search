@@ -16,10 +16,11 @@
         <label for="question_value">Question Value:</label>
         <select class="selectpicker" data-style="btn-info" name="question_value">
           <option name="" value="0">Select a Value</option>
-            <% for(var i=200; i<=1000; i+=200) {%>
+            <% for(var i=100; i<=1000; i+=100) {%>
               <option name="<%= i %>" value="<%= i %>"><%= i %></option>
             <% } %>
         </select>
+        <input type="hidden" name="category" value="<%= results.fixedcategory %>">
         <input type="submit" />
     </form>
     <table style="width:100%">

@@ -144,6 +144,7 @@ router.post('/results', function(req, res, next) {
       if(!error && response.statusCode == 200){
           //console.dir(json);
           //console.log(response.id);
+          json["fixedcategory"] = parseInt(options["category"]) || 0;
           res.render('results', { title: 'Search Results', results : json })
       } else {
           console.log(`Error: ${response.statusCode}`);
@@ -161,6 +162,7 @@ router.get('/results', function(req, res, next) {
       //console.dir(json);
       //console.log(response.id);
       json["offset"] = parseInt(options["offset"]);
+      json["fixedcategory"] = parseInt(options["category"]) || 0;
       res.render('results', { title: 'Search Results', results : json })
     } else {
       console.log(`Error: ${response.statusCode}`);
