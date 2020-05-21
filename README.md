@@ -9,5 +9,6 @@ To run locally:
 5) The app will run on localhost:3001
 
 Software/frameworks used:
+- Express and Node.js
 - https://jservice.io/ APIs
 - [Node wrapper class](https://github.com/jacobjordan94/jservice-node) for jService.io
