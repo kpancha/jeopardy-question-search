@@ -1,6 +1,8 @@
 # jeopardy-question-search
-1) install nodeJS and npm
-2) clone this repository
-3) run `npm install` in cloned directory on local host
-4) to run, use the command `npm start`
-5) the app will run on localhost:3001
+Try it out here: https://trivia-search.herokuapp.com/
+To run locally:
+1) Install nodeJS and npm
+2) Clone this repository
+3) Run `npm install` in cloned directory on local host
+4) To run, use the command `npm start`
+5) The app will run on localhost:3001
