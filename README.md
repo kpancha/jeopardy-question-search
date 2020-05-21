@@ -1,5 +1,6 @@
 # jeopardy-question-search
-Try it out here: https://trivia-search.herokuapp.com/ \n
+Try it out here: https://trivia-search.herokuapp.com/
+
 To run locally:
 1) Install nodeJS and npm
 2) Clone this repository
