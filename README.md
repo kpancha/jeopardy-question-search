@@ -2,7 +2,7 @@
 Try it out here: https://trivia-search.herokuapp.com/
 
 To run locally:
-1) Install nodeJS and npm
+1) Install Node.js and npm
 2) Clone this repository
 3) Run `npm install` in cloned directory on local host
 4) To run, use the command `npm start`
